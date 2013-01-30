@@ -16,6 +16,7 @@
 
             a.addEventListener('keydown', function (e) {
                 localStorage['mydoc'] = a.innerText;
+                fadeMe($('body'), 6000);
             });
 
             fadeMe($('body'), 3000);
@@ -33,10 +34,6 @@
                 $(obj).animate(args, t, function () { fading = false; });
             }
         }
-
-        document.onkeydown = function () {
-            fadeMe($('body'), 6000);
-        };
 
         function gimme() { return '#' + (0x1000000 + (Math.random()) * 0xffffff).toString(16).substr(1, 6); }
 
