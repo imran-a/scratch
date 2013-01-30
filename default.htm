@@ -29,6 +29,9 @@
         function fadeMe(obj, t) {
 
             if (!fading) {
+
+                fading = true;
+
                 var args = {};
                 args['background-color'] = gimme();
                 $(obj).animate(args, t, function () { fading = false; });
