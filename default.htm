@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>scratch pad</title>
+    <style type="text/css"> html { font-family: "Lucida Sans Unicode" } * { -webkit-transition: all linear 1s; }</style>
+    <script>
+        window.onload = function () {
+            
+            // opening and saving
+            var a = document.body;
+            if (localStorage['mydoc'] != undefined) {
+                a.innerText = localStorage['mydoc'];
+            }
+
+            a.addEventListener('keydown', function (e) {
+                localStorage['mydoc'] = a.innerText;
+            });
+
+            var e = false; var t = 0;
+
+            // colours - from comments of : https://coderwall.com/p/lhsrcq
+            setInterval(function () {
+
+                if (!e) {
+                    t = Math.round(Math.max(0, t - Math.max(t / 3, 1)))
+                }
+
+                var n = (255 - t * 2).toString(16);
+                document.body.style.backgroundColor = "#ff" + n + "" + n
+            }, 1e3);
+
+            var n = null;
+            document.onkeydown = function () {
+                t = Math.min(128, t + 2); e = true;
+                clearTimeout(n); n = setTimeout(function () { e = false }, 1500)
+            }
+        }
+        </script>
+</head>
+<body contenteditable style="font-size:1.5rem;line-height:1.4;max-width:60rem;margin:0 auto;padding:4rem;">
+
+</body>
+</html>
